@@ -1,6 +1,6 @@
-package com.cesur.general.services;
+package  com.cesur.general.general.services;
 
-import com.cesur.general.models.dtos.UserDTO;
+import com.cesur.general.general.models.dtos.UserDTO;
 
 public interface UserService {
 
