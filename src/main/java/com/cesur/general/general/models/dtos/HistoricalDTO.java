@@ -1,9 +1,8 @@
-package com.cesur.general.models.dtos;
+package com.cesur.general.general.models.dtos;
 
+import com.cesur.general.general.models.Incidence;
+import com.cesur.general.general.models.User;
 import java.time.LocalDateTime;
-
-import com.cesur.general.models.Incidence;
-import com.cesur.general.models.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,7 +1,8 @@
-package com.cesur.general.models.dtos;
+package com.cesur.general.general.models.dtos;
 
-import com.cesur.general.models.utils.Priorities;
-import com.cesur.general.models.utils.Scopes;
+import com.cesur.general.general.models.utils.Priorities;
+import com.cesur.general.general.models.utils.Scopes;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
