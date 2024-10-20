@@ -3,15 +3,18 @@ package com.cesur.general.general.services.implement;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cesur.general.general.models.Comment;
 import com.cesur.general.general.models.dtos.CommentDTO;
+import com.cesur.general.general.repositories.CommentRepository;
 import com.cesur.general.general.services.CommentService;
 
+@Service
 public class CommentServiceImpl implements CommentService {
 
     @Autowired
-    private CommentService commentService;
+    public CommentRepository commentRepository;
 
     @Override
     public void saveComment(CommentDTO comment) {
@@ -21,13 +24,14 @@ public class CommentServiceImpl implements CommentService {
         commentEntity.setUserCreated(comment.getUserCreated());
         commentEntity.setIncidence(comment.getIncidence());
 
-        commentService.saveComment(comment);
+        commentRepository.save(commentEntity);
     }
 
     @Override
     public List<CommentDTO> getCommentsByIncidenceId(Long id) {
-        return new CommentServiceImpl().getCommentsByIncidenceId(id).stream()
-                .map((comment) -> {
+        return commentRepository.findByIncidenceId(id)
+                .stream()
+                .map(comment -> {
                     CommentDTO commentDTO = new CommentDTO();
                     commentDTO.setId(comment.getId());
                     commentDTO.setContent(comment.getContent());
@@ -35,12 +39,13 @@ public class CommentServiceImpl implements CommentService {
                     commentDTO.setUserCreated(comment.getUserCreated());
                     commentDTO.setIncidence(comment.getIncidence());
                     return commentDTO;
-                }).toList();
+                })
+                .toList();
     }
 
     @Override
     public void deleteComment(Long id) {
-        commentService.deleteComment(id);
+        commentRepository.deleteById(id);
     }
 
 }

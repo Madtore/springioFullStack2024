@@ -3,12 +3,14 @@ package com.cesur.general.general.services.implement;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cesur.general.general.models.Incidence;
 import com.cesur.general.general.models.dtos.IncidenceDTO;
 import com.cesur.general.general.repositories.IncidenceRepository;
 import com.cesur.general.general.services.IncidenceService;
 
+@Service
 public class IncidenceServiceImpl implements IncidenceService {
 
     @Autowired

@@ -1,13 +1,14 @@
 package com.cesur.general.general.services.implement;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cesur.general.general.models.User;
 import com.cesur.general.general.models.dtos.UserDTO;
-import com.cesur.general.general.models.utils.Roles;
 import com.cesur.general.general.repositories.UserRepository;
 import com.cesur.general.general.services.UserService;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
