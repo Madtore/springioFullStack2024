@@ -18,6 +18,6 @@ public class IncidenceDTO {
 
     private Scopes scope;
 
-    private String userCreated;
+    private Long userCreated;
 
 }
