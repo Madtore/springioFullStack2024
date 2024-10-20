@@ -10,7 +10,7 @@ import com.cesur.general.general.models.Comment;
 
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Long> {
-    @Query("SELECT c FROM CommentEntity c WHERE c.incidence.id = :incidenceId")
-    List<Comment> findByIncidenceId(Long incidenceId);
+    @Query("SELECT c FROM Comment c WHERE c.incidence.id = :incidence_id")
+    List<Comment> findByIncidenceId(Long incidence_id);
 
 }
