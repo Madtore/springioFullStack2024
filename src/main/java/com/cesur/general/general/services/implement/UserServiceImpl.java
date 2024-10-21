@@ -1,5 +1,9 @@
 package com.cesur.general.general.services.implement;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,37 +19,46 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public void saveUser(UserDTO userDTO) {
+    public void storeUser(UserDTO userDTO) {
         User user = new User();
         user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
         user.setPassword(userDTO.getPassword());
         user.setRol(userDTO.getRol());
+        user.setActive(userDTO.getActive());
+        user.setCreateAt(LocalDateTime.now());
+        
         userRepository.save(user);
     }
 
-    @Override
-    public UserDTO getUserById(Long id) {
+    
 
-        User user = userRepository.findById(id).get();
+    @Override
+    public void updateUser(Long id, UserDTO user) {
+
+    }
+
+
+
+    @Override
+    public UserDTO getUserByEmail(String email) {
+        User user = userRepository.getUserByEmail(email).get();
         UserDTO userDTO = new UserDTO();
-        userDTO.setId(user.getId());
-        userDTO.setName(user.getName());
         userDTO.setEmail(user.getEmail());
-        userDTO.setPassword(user.getPassword());
+        userDTO.setName(user.getName());
+        userDTO.setActive(user.getActive());
+        userDTO.setId(user.getId());
+        userDTO.setLastConnection(user.getLastConnection());
         userDTO.setRol(user.getRol());
         return userDTO;
     }
 
-    @Override
-    public void updateUser(UserDTO userDTO) {
 
-        User user = userRepository.findById(userDTO.getId()).get();
-        user.setName(userDTO.getName());
-        user.setEmail(userDTO.getEmail());
-        user.setPassword(userDTO.getPassword());
-        user.setRol(userDTO.getRol());
-        userRepository.save(user);
+
+    @Override
+    public void deleteUser(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deleteUser'");
     }
 
 }

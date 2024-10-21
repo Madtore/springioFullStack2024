@@ -2,8 +2,8 @@ package com.cesur.general.general.models;
 
 import java.time.LocalDateTime;
 
-import com.cesur.general.general.models.utils.Priorities;
-import com.cesur.general.general.models.utils.Scopes;
+import com.cesur.general.general.models.utils.enums.Priorities;
+import com.cesur.general.general.models.utils.enums.Scopes;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

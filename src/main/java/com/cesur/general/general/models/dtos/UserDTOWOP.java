@@ -1,6 +1,5 @@
 package com.cesur.general.general.models.dtos;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.cesur.general.general.models.utils.enums.Roles;
@@ -12,15 +11,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDTO {
-
-    private Long id;
+public class UserDTOWOP {
+     private Long id;
 
     private String name;
 
     private String email;
-
-    private String password;
 
     private Roles rol;
 
@@ -28,7 +24,4 @@ public class UserDTO {
 
     private LocalDateTime lastConnection;
 
-    private LocalDateTime createAt;
-    private LocalDateTime deleteAt;
-    private LocalDateTime upDateTime;
 }

@@ -1,31 +1,38 @@
 package com.cesur.general.general.services.implement;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cesur.general.general.models.Incidence;
+import com.cesur.general.general.models.User;
 import com.cesur.general.general.models.dtos.IncidenceDTO;
 import com.cesur.general.general.repositories.IncidenceRepository;
+import com.cesur.general.general.repositories.UserRepository;
 import com.cesur.general.general.services.IncidenceService;
 
 @Service
 public class IncidenceServiceImpl implements IncidenceService {
 
     @Autowired
-    private IncidenceRepository repository;
+    private IncidenceRepository incidenceRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public void storeIncidence(IncidenceDTO datos) {
-        Incidence incidence = new Incidence();
-        incidence.setDescription(datos.getDescription());
-        incidence.setPriority(datos.getPriority());
-        incidence.setScope(datos.getScope());
-        incidence.setUserCreated(null);
-
-        repository.save(incidence);
-
+        Optional<User> user = userRepository.findById(Long.parseLong(datos.getUserCreated()));
+        if (user.isPresent()) {
+            Incidence incidence = new Incidence();
+            incidence.setDescription(datos.getDescription());
+            incidence.setPriority(datos.getPriority());
+            incidence.setScope(datos.getScope());
+            incidence.setUserCreated(user.get());
+            incidenceRepository.save(incidence);
+        }
     }
 
     @Override

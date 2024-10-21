@@ -1,7 +1,7 @@
 package com.cesur.general.general.models.dtos;
 
-import com.cesur.general.general.models.utils.Priorities;
-import com.cesur.general.general.models.utils.Scopes;
+import com.cesur.general.general.models.utils.enums.Priorities;
+import com.cesur.general.general.models.utils.enums.Scopes;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,6 +18,6 @@ public class IncidenceDTO {
 
     private Scopes scope;
 
-    private Long userCreated;
+    private String userCreated;
 
 }

@@ -4,9 +4,11 @@ import com.cesur.general.general.models.dtos.UserDTO;
 
 public interface UserService {
 
-    public void saveUser(UserDTO userDTO);
+    void storeUser(UserDTO userDTO);
 
-    UserDTO getUserById(Long id);
+    UserDTO getUserByEmail(String email);
 
-    public void updateUser(UserDTO userDTO);
+    void updateUser(Long id, UserDTO userDTO);
+
+    void deleteUser(Long id);
 }
