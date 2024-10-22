@@ -1,14 +1,13 @@
 package com.cesur.general.general.services.implement;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cesur.general.general.models.User;
 import com.cesur.general.general.models.dtos.UserDTO;
+import com.cesur.general.general.models.utils.mappers.UserMapper;
 import com.cesur.general.general.repositories.UserRepository;
 import com.cesur.general.general.services.UserService;
 
@@ -20,15 +19,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void storeUser(UserDTO userDTO) {
-        User user = new User();
-        user.setName(userDTO.getName());
-        user.setEmail(userDTO.getEmail());
-        user.setPassword(userDTO.getPassword());
-        user.setRol(userDTO.getRol());
-        user.setActive(userDTO.getActive());
-        user.setCreateAt(LocalDateTime.now());
-        
-        userRepository.save(user);
+        // User user = new User();
+        // user.setName(userDTO.getName());
+        // user.setEmail(userDTO.getEmail());
+        // user.setPassword(userDTO.getPassword());
+        // user.setRol(userDTO.getRol());
+        // user.setActive(userDTO.getActive());
+        // user.setCreateAt(LocalDateTime.now());
+        User userToBd = UserMapper.instance.userDtoToUserWithOutId(userDTO);
+        userRepository.save(userToBd);
     }
 
     
@@ -43,14 +42,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO getUserByEmail(String email) {
         User user = userRepository.getUserByEmail(email).get();
-        UserDTO userDTO = new UserDTO();
-        userDTO.setEmail(user.getEmail());
-        userDTO.setName(user.getName());
-        userDTO.setActive(user.getActive());
-        userDTO.setId(user.getId());
-        userDTO.setLastConnection(user.getLastConnection());
-        userDTO.setRol(user.getRol());
-        return userDTO;
+        // UserDTO userDTO = new UserDTO();
+        // userDTO.setEmail(user.getEmail());
+        // userDTO.setName(user.getName());
+        // userDTO.setActive(user.getActive());
+        // userDTO.setId(user.getId());
+        // userDTO.setLastConnection(user.getLastConnection());
+        // userDTO.setRol(user.getRol());
+
+
+        return UserMapper.instance.userToUserDtoWithOutPassword(user);
     }
 
 
