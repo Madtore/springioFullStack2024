@@ -21,20 +21,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/incidences")
 public class IncidenceController {
 
     @Autowired
     private IncidenceService incidenceService;
 
-    @PostMapping("/incidence/store")
-    public ResponseEntity<?> storeIncidence1(@Validated @RequestBody IncidenceDTO incidence) {
+    // @PostMapping("/store")
+    // public ResponseEntity<?> storeIncidence1(@Validated @RequestBody IncidenceDTO incidence) {
 
-        incidenceService.storeIncidence(incidence);
-        return new ResponseEntity<IncidenceDTO>(incidence, HttpStatus.CREATED);
-    }
+    //     incidenceService.storeIncidence(incidence);
+    //     return new ResponseEntity<IncidenceDTO>(incidence, HttpStatus.CREATED);
+    // }
 
-    @PostMapping("/incidence")
+    @PostMapping("/")
     public ResponseEntity<?> storeIncidence(@Validated @RequestBody IncidenceDTO incidence) {
         try {
             incidenceService.storeIncidence(incidence);
@@ -44,7 +44,7 @@ public class IncidenceController {
         }
     }
 
-    @PostMapping("/incidence/:id")
+    @PostMapping("/:id")
     public ResponseEntity<?> addIncidenteDetail(@PathParam(value = "id") Integer id) {
         try {
             IncidenceDTO incidenceDTO = incidenceService.getIncidenceById(Long.valueOf(id));

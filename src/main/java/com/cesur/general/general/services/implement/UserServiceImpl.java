@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
         // user.setRol(userDTO.getRol());
         // user.setActive(userDTO.getActive());
         // user.setCreateAt(LocalDateTime.now());
-        User userToBd = UserMapper.instance.userDtoToUserWithOutId(userDTO);
+        User userToBd = UserMapper.instance.userDtoToUserDB(userDTO);
         userRepository.save(userToBd);
     }
 

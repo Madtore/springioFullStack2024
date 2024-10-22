@@ -25,11 +25,22 @@ public interface UserMapper {
     @Mapping(target = "password", ignore = true)
     UserDTO userToUserDtoWithOutPassword(User user);
 
-    @Mapping(target = "lastConnetcion", qualifiedByName = "calculateLastConnetcion" )
+    //@Mapping(target = "lastConnetcion", qualifiedByName = "calculateLastConnetcion" )
     UserDTO userToUserDtoLastConnetion(User user);
 
-
+    @Mapping(target="lastConnection" , ignore = true)
+   // @Mapping(target="createAt" , qualifiedByName = "calculateCreateAt")
+    @Mapping(target="deleteAt" , ignore = true)
+    @Mapping(target="updateAt" , ignore = true)
+    @Mapping(target = "id", ignore = true)
+    User userDtoToUserDB(UserDTO userDTO);
+     
+    
     default LocalDateTime calculateLastConnetcion(){
+        return LocalDateTime.now();
+    }
+
+    default LocalDateTime calculateCreateAt(){
         return LocalDateTime.now();
     }
 }
