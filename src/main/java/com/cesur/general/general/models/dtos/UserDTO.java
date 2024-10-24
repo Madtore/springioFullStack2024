@@ -1,13 +1,19 @@
 package com.cesur.general.general.models.dtos;
 
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 
-import org.hibernate.annotations.NotFound;
+
 
 import com.cesur.general.general.models.utils.enums.Roles;
+import com.cesur.general.general.models.utils.validadors.StrongPassword;
 
-import jakarta.annotation.Nonnull;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,22 +25,25 @@ public class UserDTO {
 
     private Long id;
 
-    @Nonnull
+    @NotEmpty(message = "Se debe agregar un nombre")
+    @NotNull(message = "Se debe agregar un nombre")
     private String name;
 
-    @Nonnull
+    @Email(message = "Se debe agregar un email valido")
+    @NotNull(message = "Se debe agregar un email")
     private String email;
 
-    @Nonnull
+    @StrongPassword
     private String password;
 
-    @Nonnull
+    @NotNull(message = "Se debe agregar un rol")
     private Roles rol;
 
-    @Nonnull
+    @NotNull(message = "Se debe agregar un estado")
     private Boolean active;
 
     private LocalDateTime lastConnection;
+
 
     private LocalDateTime createAt;
     private LocalDateTime deleteAt;

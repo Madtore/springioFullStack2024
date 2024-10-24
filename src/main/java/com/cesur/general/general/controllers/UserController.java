@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cesur.general.general.models.dtos.UserDTO;
 import com.cesur.general.general.services.UserService;
 
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -25,7 +26,7 @@ public class UserController {
     @Autowired
     private UserService userService;
     @PostMapping("")
-    public ResponseEntity<UserDTO> storeUser(@Validated @RequestBody UserDTO UserDto) {
+    public ResponseEntity<UserDTO> storeUser(@Valid @RequestBody UserDTO UserDto) {
         try {
             userService.storeUser(UserDto);
             return new ResponseEntity<UserDTO>(UserDto, HttpStatus.CREATED);

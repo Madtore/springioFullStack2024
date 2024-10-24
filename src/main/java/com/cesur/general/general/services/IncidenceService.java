@@ -13,6 +13,6 @@ public interface IncidenceService {
 
     List<IncidenceDTO> getIncidenceByUserName(String username);
 
-    void addIncidentence(Integer id);
+    void addIncidentence();
 
 }
