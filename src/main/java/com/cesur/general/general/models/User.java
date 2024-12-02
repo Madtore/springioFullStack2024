@@ -2,7 +2,8 @@ package com.cesur.general.general.models;
 
 import java.time.LocalDateTime;
 
-import com.cesur.general.general.models.utils.Roles;
+import com.cesur.general.general.models.utils.enums.Roles;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -40,7 +41,7 @@ public class User {
     private Roles rol;
 
     @Column(name = "createdAt")
-    private LocalDateTime createUpdate;
+    private LocalDateTime createAt;
 
     @Column(name = "active")
     private Boolean active;
